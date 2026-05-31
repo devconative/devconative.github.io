@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Conative personal blog and portfolio">
+    <title>Conative Blog</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav class="main-navigation open" id="site-navigation" aria-label="Primary navigation">
+        <button class="expand-btn" id="nav-toggle" type="button" aria-label="메뉴 열고 닫기"></button>
+
+        <section class="user-profile" aria-label="Profile">
+            <a class="profile-avatar" href="#home" aria-label="홈으로 이동">C</a>
+            <h2>Conative</h2>
+            <p>기록하며 성장하는 개발자</p>
+            <div class="profile-links">
+                <a href="https://github.com/Positive-Conative" target="_blank" rel="noreferrer" aria-label="GitHub">GH</a>
+                <a href="#contact" aria-label="Contact">CT</a>
+            </div>
+        </section>
+
+        <hr class="nav-divider">
+
+        <p class="nav-section-label">Categories</p>
+        <div class="nav-body">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#career" class="nav-link">Career</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="blog/" class="nav-link">Blog</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+
+        <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="테마 전환">
+            <span class="theme-toggle-icon" aria-hidden="true"></span>
+            <span class="theme-toggle-label">Light Mode</span>
+        </button>
+
+        <footer class="nav-footer">&copy; <span id="current-year">2026</span> Conative</footer>
+    </nav>
+
+    <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+
+    <main class="container">
+        <section class="hero-section reveal-section" id="home">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <p class="hero-greeting reveal" data-delay="0">안녕하세요,</p>
+                    <h1 class="hero-name reveal" data-delay="1">Conative</h1>
+                    <p class="hero-title reveal" data-delay="2">Full Stack Developer</p>
+                    <p class="hero-desc reveal" data-delay="3">
+                        항상 열정이 가득한 무한 긍정 프로그래머.<br>
+                        배운 것을 기록하고, 기록이 성장이 되는 공간입니다.
+                    </p>
+                    <div class="hero-btns reveal" data-delay="4">
+                        <a class="btn btn-primary" href="blog/">블로그 보기</a>
+                        <a class="btn btn-secondary" href="https://github.com/Positive-Conative" target="_blank" rel="noreferrer">GitHub</a>
+                    </div>
+                </div>
+                <div class="hero-image reveal" data-delay="5" aria-hidden="true">
+                    <div class="hero-image-ring">
+                        <div class="hero-profile-img">C</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section reveal-section" id="about">
+            <div class="section-heading">
+                <p>About</p>
+                <h2>기록으로 생각을 선명하게 만듭니다.</h2>
+            </div>
+            <div class="about-grid">
+                <article class="info-card">
+                    <h3>Why I Write</h3>
+                    <p>개발하며 배운 판단, 시행착오, 작은 해결책을 남깁니다. 시간이 지나도 다시 꺼내 쓸 수 있는 형태의 기록을 지향합니다.</p>
+                </article>
+                <article class="info-card">
+                    <h3>What I Build</h3>
+                    <p>프론트엔드와 백엔드를 함께 다루며, 사용자 경험과 운영 가능한 구조 사이의 균형을 고민합니다.</p>
+                </article>
+                <article class="info-card">
+                    <h3>How I Work</h3>
+                    <p>작게 검증하고, 명확하게 정리하고, 반복 가능한 방식으로 개선합니다.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="content-section reveal-section" id="career">
+            <div class="section-heading">
+                <p>Career</p>
+                <h2>경험은 프로젝트의 맥락으로 정리합니다.</h2>
+            </div>
+            <div class="history-list" id="career-list" aria-live="polite">
+                <div class="post-card-empty">연혁을 불러오는 중입니다.</div>
+            </div>
+        </section>
+
+        <section class="content-section reveal-section" id="skills">
+            <div class="section-heading">
+                <p>Skills</p>
+                <h2>자주 사용하는 기술</h2>
+            </div>
+            <div class="skill-grid">
+                <article class="skill-card">
+                    <h3>Frontend</h3>
+                    <p>HTML, CSS, JavaScript, TypeScript, React</p>
+                </article>
+                <article class="skill-card">
+                    <h3>Backend</h3>
+                    <p>Node.js, Express, REST API, TypeORM</p>
+                </article>
+                <article class="skill-card">
+                    <h3>Database</h3>
+                    <p>MySQL, schema design, migration</p>
+                </article>
+                <article class="skill-card">
+                    <h3>Workflow</h3>
+                    <p>Git, GitHub Pages, documentation, automation</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="content-section reveal-section" id="blog">
+            <div class="section-heading">
+                <p>Blog</p>
+                <h2>최근 기록</h2>
+            </div>
+            <div class="post-grid" id="recent-posts" aria-live="polite">
+                <div class="post-card-empty">최근 글을 불러오는 중입니다.</div>
+            </div>
+        </section>
+
+        <section class="content-section contact-section reveal-section" id="contact">
+            <div class="section-heading">
+                <p>Contact</p>
+                <h2>함께 이야기할 수 있는 곳</h2>
+            </div>
+            <div class="contact-panel">
+                <p>프로젝트, 기록, 개발 이야기는 GitHub를 통해 이어갈 수 있습니다.</p>
+                <a class="btn btn-primary" href="https://github.com/Positive-Conative" target="_blank" rel="noreferrer">GitHub 방문하기</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/site-data.js"></script>
+    <script src="assets/js/career.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

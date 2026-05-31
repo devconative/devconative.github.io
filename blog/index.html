@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Conative blog posts and categories">
+    <title>Blog · Conative</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="blog-page">
+    <nav class="main-navigation open" id="site-navigation" aria-label="Primary navigation">
+        <button class="expand-btn" id="nav-toggle" type="button" aria-label="메뉴 열고 닫기"></button>
+
+        <section class="user-profile" aria-label="Profile">
+            <a class="profile-avatar" href="../#home" aria-label="홈으로 이동">C</a>
+            <h2>Conative</h2>
+            <p>기록하며 성장하는 개발자</p>
+            <div class="profile-links">
+                <a href="https://github.com/Positive-Conative" target="_blank" rel="noreferrer" aria-label="GitHub">GH</a>
+                <a href="../#contact" aria-label="Contact">CT</a>
+            </div>
+        </section>
+
+        <hr class="nav-divider">
+
+        <p class="nav-section-label">Navigation</p>
+        <div class="nav-body">
+            <a href="../#home" class="nav-link">Home</a>
+            <a href="../#about" class="nav-link">About</a>
+            <a href="../#career" class="nav-link">Career</a>
+            <a href="../#skills" class="nav-link">Skills</a>
+            <a href="./" class="nav-link active">Blog</a>
+            <a href="../#contact" class="nav-link">Contact</a>
+        </div>
+
+        <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="테마 전환">
+            <span class="theme-toggle-icon" aria-hidden="true"></span>
+            <span class="theme-toggle-label">Light Mode</span>
+        </button>
+
+        <footer class="nav-footer">&copy; <span id="current-year">2026</span> Conative</footer>
+    </nav>
+
+    <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+
+    <main class="container">
+        <section class="content-section blog-hero reveal-section" id="blog-home">
+            <div class="section-heading">
+                <p>Blog</p>
+                <h1>Project-CB 기록 보관소</h1>
+                <span class="blog-count-pill" id="blog-group-count">그룹 불러오는 중</span>
+                <span class="blog-count-pill" id="blog-post-count">글 불러오는 중</span>
+            </div>
+            <div class="blog-toolbar">
+                <label class="blog-search-label" for="blog-search">검색</label>
+                <input id="blog-search" class="blog-search" type="search" placeholder="제목, 그룹, 요약 검색">
+                <span id="blog-summary" class="blog-summary">0개의 글</span>
+            </div>
+        </section>
+
+        <section class="blog-layout content-section reveal-section">
+            <aside class="blog-sidebar" aria-label="Blog groups">
+                <h2>Groups</h2>
+                <ul class="blog-group-tree" id="blog-group-tree"></ul>
+            </aside>
+            <section class="blog-posts" aria-label="Blog posts">
+                <h2>Posts</h2>
+                <div class="blog-post-list" id="blog-post-list"></div>
+            </section>
+        </section>
+    </main>
+
+    <script src="../assets/js/site-data.js"></script>
+    <script src="../assets/js/blog.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
