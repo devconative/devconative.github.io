@@ -31,6 +31,18 @@ window.SITE_DATA = {
       "memo": ""
     },
     {
+      "idx": 23,
+      "reference": 0,
+      "name": "AI",
+      "memo": "AI 신규 소식"
+    },
+    {
+      "idx": 24,
+      "reference": 23,
+      "name": "신규소식",
+      "memo": "AI 뉴스 업데이트"
+    },
+    {
       "idx": 11,
       "reference": 3,
       "name": "오답노트",
@@ -110,6 +122,16 @@ window.SITE_DATA = {
     }
   ],
   "posts": [
+    {
+      "idx": 50,
+      "title": "[중요] 2026-06-03",
+      "content": "<h1><span style=\"color:#d66a6a; font-weight:700;\">[중요]</span> 2026-06-03</h1>\n\n오늘은 엔터프라이즈 배포, 에이전트 보안, 검색·업무 보조 기능 쪽 소식이 함께 보였습니다. OpenAI의 AWS 정식 제공과 Anthropic의 Project Glasswing 확장은 개발자와 보안 조직에 직접적인 영향을 줄 만한 변화입니다.\n\n## OpenAI 모델과 Codex, AWS에서 정식 제공\n\nOpenAI는 frontier 모델과 Codex가 AWS에서 일반 제공된다고 발표했습니다. 기업은 Amazon Bedrock 등 AWS 운영 모델 안에서 OpenAI 기능을 도입할 수 있어 보안, 거버넌스, 조달 흐름을 기존 체계에 맞추기 쉬워집니다.\n\n왜 중요한가: AI 도입의 병목이 모델 성능만이 아니라 배포·권한·감사 체계라는 점에서, 대기업의 실제 운영 전환을 앞당길 수 있습니다.\n\n출처: [OpenAI - OpenAI frontier models and Codex are now available on AWS](https://openai.com/index/openai-frontier-models-and-codex-are-now-available-on-aws/)\n\n## Anthropic, Project Glasswing 확대\n\nAnthropic은 중요 소프트웨어 보안을 위한 Project Glasswing을 약 150개 신규 조직으로 확대한다고 밝혔습니다. 기존 파트너들이 Claude Mythos Preview로 코드베이스를 스캔해 고위험 취약점을 발견해왔고, 이번 확대는 더 많은 중요 인프라 조직으로 접근 범위를 넓히는 흐름입니다.\n\n왜 중요한가: 에이전트형 AI가 코드 작성뿐 아니라 대규모 보안 점검에도 투입되는 대표 사례라, 보안 자동화의 현실 적용 범위를 보여줍니다.\n\n출처: [Anthropic - Expanding Project Glasswing](https://www.anthropic.com/news/expanding-project-glasswing)\n\n## Anthropic, SEC에 비공개 S-1 제출\n\nAnthropic은 미국 SEC에 기업공개를 위한 draft S-1을 비공개로 제출했다고 공지했습니다. 실제 공개 여부와 시점은 시장 상황과 SEC 검토 절차에 따라 결정됩니다.\n\n왜 중요한가: frontier AI 기업의 자본시장 진입 준비는 AI 인프라 투자, 컴퓨트 확보, 기업 고객 확장 경쟁에 영향을 줄 수 있습니다.\n\n출처: [Anthropic Newsroom](https://www.anthropic.com/news)\n\n## Google, I/O 2026의 AI 발표 묶음 공개\n\nGoogle은 I/O 2026 발표 모음에서 Gemini Omni, Gemini 3.5, Google Antigravity 개선, Gemini 앱의 Daily Brief 등 AI 중심 업데이트를 정리했습니다. 특히 개발 도구는 코드 작성 보조를 넘어 에이전트가 행동하는 방향으로 확장되고 있습니다.\n\n왜 중요한가: Google 생태계의 AI 기능이 모델, 개발 플랫폼, 검색, 쇼핑, 앱 경험 전반으로 넓어지며 제품 설계 기준을 바꾸고 있습니다.\n\n출처: [Google - I/O 2026 News and announcements](https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-collection/)\n\n## ChatGPT, 채용 검색과 이력서 포맷 지원 확대\n\nOpenAI의 ChatGPT 릴리즈 노트에 따르면 ChatGPT는 미국 사용자에게 실시간 채용 목록 탐색을 제공하고, 전 세계 영어 사용자에게 이력서 작성·포맷 다운로드를 지원합니다. 같은 릴리즈 노트에는 일부 구형 모델의 sunset 일정도 함께 안내됐습니다.\n\n왜 중요한가: 범용 챗봇이 단순 답변을 넘어 구직 워크플로우까지 연결되면서, 개인 업무 자동화의 접점이 더 넓어지고 있습니다.\n\n출처: [OpenAI Help - ChatGPT Release Notes](https://help.openai.com/en/articles/6825453-how-to-create-a-custom-gpt)\n\n## 마무리\n\n오늘의 흐름은 모델 경쟁보다 운영 환경, 보안, 업무 워크플로우에 AI를 깊게 끼워 넣는 쪽에 더 가까웠습니다.",
+      "createTime": "2026-06-03 13:43:35",
+      "updateTime": "2026-06-03 13:43:35",
+      "groupIdx": 24,
+      "excerpt": "중요 2026 06 03 오늘은 엔터프라이즈 배포, 에이전트 보안, 검색·업무 보조 기능 쪽 소식이 함께 보였습니다. OpenAI의 AWS 정식 제공과 Anthropic의 Project Glasswing 확장은 개발자와 보안 조직에 직접적인 영향을 줄 만한 변화입니다.",
+      "contentLength": 2167
+    },
     {
       "idx": 15,
       "title": "인증 테스트",
