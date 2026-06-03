@@ -19,29 +19,37 @@
 
     const careerList = document.getElementById('career-list');
     if (careerList) {
+        careerList.classList.add('career-timeline');
         careerList.innerHTML = data.career.map((phase) => `
             <section class="career-phase">
-                <header class="career-phase-header">
-                    <div>
-                        <h3>${escapeHtml(phase.label)}</h3>
-                        <p>${escapeHtml(phase.sublabel)}</p>
+                <header class="career-phase-header${phase.isWork ? ' is-work' : ''}">
+                    <div class="career-phase-spine">
+                        <span class="career-phase-dot" aria-hidden="true"></span>
                     </div>
-                    ${phase.isWork ? '<span class="career-phase-badge">Work</span>' : ''}
+                    <div class="career-phase-label">
+                        <span class="career-phase-name">${escapeHtml(phase.label)}</span>
+                        <span class="career-phase-sub">${escapeHtml(phase.sublabel)}</span>
+                    </div>
                 </header>
                 <div class="career-phase-items">
-                    ${phase.items.map((item) => `
-                        <article class="career-card">
-                            <div class="career-card-meta">
-                                <span>${escapeHtml(item.period)}</span>
-                                <span>${escapeHtml(typeLabel[item.type] || item.type)}</span>
+                    ${phase.items.map((item, index) => `
+                        <article class="career-entry${index === phase.items.length - 1 ? ' is-last' : ''}">
+                            <div class="career-entry-spine">
+                                <span class="career-dot" aria-hidden="true"></span>
                             </div>
-                            <h4>${escapeHtml(item.title)}</h4>
-                            ${item.award ? `<p class="career-award">${escapeHtml(item.award)}</p>` : ''}
-                            <p>${escapeHtml(item.description || '작성 중')}</p>
-                            <div class="career-tags">
-                                ${(item.tags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}
+                            <div class="career-card">
+                                <div class="career-card-meta">
+                                    <span class="career-period">${escapeHtml(item.period)}</span>
+                                    <span class="career-type career-type--${escapeHtml(item.type)}">${escapeHtml(typeLabel[item.type] || item.type)}</span>
+                                </div>
+                                <h3 class="career-card-title">${escapeHtml(item.title)}</h3>
+                                ${item.award ? `<p class="career-award">${escapeHtml(item.award)}</p>` : ''}
+                                <p class="career-card-desc">${escapeHtml(item.description || '작성 중')}</p>
+                                <div class="career-tags">
+                                    ${(item.tags || []).map((tag) => `<span class="career-tag">${escapeHtml(tag)}</span>`).join('')}
+                                </div>
+                                ${item.link ? `<a class="career-link" href="${escapeHtml(item.link)}" target="_blank" rel="noreferrer">Link →</a>` : ''}
                             </div>
-                            ${item.link ? `<a class="career-link" href="${escapeHtml(item.link)}" target="_blank" rel="noreferrer">Link</a>` : ''}
                         </article>
                     `).join('')}
                 </div>

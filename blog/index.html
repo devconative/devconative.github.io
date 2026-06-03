@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Conative blog posts and categories">
     <title>Blog · Conative</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css?v=20260603-001">
 </head>
 <body class="blog-page">
-    <nav class="main-navigation open" id="site-navigation" aria-label="Primary navigation">
+    <nav class="main-navigation" id="site-navigation" aria-label="Primary navigation">
         <button class="expand-btn" id="nav-toggle" type="button" aria-label="메뉴 열고 닫기"></button>
 
         <section class="user-profile" aria-label="Profile">
@@ -47,7 +47,8 @@
         <section class="content-section blog-hero reveal-section" id="blog-home">
             <div class="section-heading">
                 <p>Blog</p>
-                <h1>Project-CB 기록 보관소</h1>
+                <nav class="breadcrumb" id="blog-breadcrumb" aria-label="breadcrumb"></nav>
+                <h1 id="blog-title">전체 글</h1>
                 <span class="blog-count-pill" id="blog-group-count">그룹 불러오는 중</span>
                 <span class="blog-count-pill" id="blog-post-count">글 불러오는 중</span>
             </div>
@@ -59,10 +60,6 @@
         </section>
 
         <section class="blog-layout content-section reveal-section">
-            <aside class="blog-sidebar" aria-label="Blog groups">
-                <h2>Groups</h2>
-                <ul class="blog-group-tree" id="blog-group-tree"></ul>
-            </aside>
             <section class="blog-posts" aria-label="Blog posts">
                 <h2>Posts</h2>
                 <div class="blog-post-list" id="blog-post-list"></div>
@@ -70,8 +67,8 @@
         </section>
     </main>
 
-    <script src="../assets/js/site-data.js"></script>
-    <script src="../assets/js/blog.js"></script>
-    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/site-data.js?v=20260603-001"></script>
+    <script src="../assets/js/blog.js?v=20260603-001"></script>
+    <script src="../assets/js/main.js?v=20260603-001"></script>
 </body>
 </html>

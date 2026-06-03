@@ -47,6 +47,53 @@
         return `${groupPath(group.reference)} / ${group.name}`;
     };
 
+    const groupPathItems = (idx) => {
+        const group = data.groups.find((item) => item.idx === idx);
+        if (!group) return [];
+        return [...groupPathItems(group.reference), group];
+    };
+
+    const currentGroup = () => state.groupIdx
+        ? data.groups.find((group) => group.idx === state.groupIdx)
+        : null;
+
+    const renderBreadcrumb = (post = null) => {
+        const breadcrumb = document.getElementById('blog-breadcrumb');
+        if (!breadcrumb) return;
+
+        const groupItems = post ? groupPathItems(post.groupIdx) : groupPathItems(state.groupIdx);
+        const entries = [
+            '<a href="../">Home</a>',
+            '<a href="./">Blog</a>',
+            ...groupItems.map((group, index) => {
+                const isLastGroup = index === groupItems.length - 1 && !post;
+                return isLastGroup
+                    ? `<span aria-current="page">${escapeHtml(group.name)}</span>`
+                    : `<a href="?group=${group.idx}">${escapeHtml(group.name)}</a>`;
+            }),
+        ];
+
+        if (post) entries.push(`<span aria-current="page">${escapeHtml(post.title)}</span>`);
+        breadcrumb.innerHTML = entries.join('<span class="breadcrumb-sep" aria-hidden="true">›</span>');
+    };
+
+    const updateHero = (post = null) => {
+        const title = document.getElementById('blog-title');
+        const groupCount = document.getElementById('blog-group-count');
+        const postCount = document.getElementById('blog-post-count');
+        const group = currentGroup();
+
+        if (title) title.textContent = post?.title || group?.name || '전체 글';
+        if (groupCount) {
+            groupCount.textContent = group ? groupPath(group.idx) : `${data.groups.length}개 그룹`;
+        }
+        if (postCount) {
+            const count = group ? countPosts(group.idx) : data.posts.length;
+            postCount.textContent = post ? `#${post.idx}` : `${count}개 글`;
+        }
+        renderBreadcrumb(post);
+    };
+
     const slugify = (value, index) => `section-${index}-${String(value || '')
         .trim()
         .toLowerCase()
@@ -138,19 +185,6 @@
         return { html: html.join(''), toc };
     };
 
-    const renderGroupNode = (group) => {
-        const children = childrenOf(group.idx);
-        return `
-            <li>
-                <button class="blog-group-btn ${state.groupIdx === group.idx ? 'is-active' : ''}" type="button" data-group="${group.idx}">
-                    <span>${escapeHtml(group.name)}</span>
-                    <span>${countPosts(group.idx)}</span>
-                </button>
-                ${children.length ? `<ul>${children.map(renderGroupNode).join('')}</ul>` : ''}
-            </li>
-        `;
-    };
-
     const filterPosts = () => {
         const q = state.query.trim().toLowerCase();
         const groupIds = state.groupIdx ? new Set(descendantIds(state.groupIdx)) : null;
@@ -168,6 +202,7 @@
         if (!list || !summary) return;
 
         const posts = filterPosts();
+        updateHero();
         summary.textContent = `${posts.length}개의 글`;
 
         if (!posts.length) {
@@ -194,11 +229,15 @@
         if (!list || !summary || !post) return false;
 
         const parsed = markdownToHtml(post.content || '');
+        updateHero(post);
         summary.textContent = groupPath(post.groupIdx);
         list.innerHTML = `
             <article class="post-document-shell">
                 <div class="post-document-main">
-                    <a class="post-back-btn" href="./${state.groupIdx ? `?group=${state.groupIdx}` : ''}">← 목록으로</a>
+                    <a class="post-back-btn" href="./?group=${post.groupIdx}">← ${escapeHtml(data.groups.find((group) => group.idx === post.groupIdx)?.name || '목록')} 목록으로</a>
+                    <nav class="post-breadcrumb" aria-label="post breadcrumb">
+                        ${groupPathItems(post.groupIdx).map((group) => `<a href="?group=${group.idx}">${escapeHtml(group.name)}</a>`).join('<span>›</span>')}
+                    </nav>
                     <p class="post-meta">${escapeHtml(groupPath(post.groupIdx))} · ${escapeHtml(formatDate(post.createTime))}</p>
                     <h1>${escapeHtml(post.title)}</h1>
                     <div class="post-document">
@@ -221,42 +260,14 @@
         return true;
     };
 
-    const renderGroups = () => {
-        const tree = document.getElementById('blog-group-tree');
-        if (!tree) return;
-        const roots = childrenOf(0);
-        tree.innerHTML = `
-            <li>
-                <button class="blog-group-btn ${state.groupIdx ? '' : 'is-active'}" type="button" data-group="">
-                    <span>전체 글</span>
-                    <span>${data.posts.length}</span>
-                </button>
-            </li>
-            ${roots.map(renderGroupNode).join('')}
-        `;
-    };
-
     const bind = () => {
         document.getElementById('blog-search')?.addEventListener('input', (event) => {
             state.query = event.target.value;
             renderPosts();
         });
-
-        document.getElementById('blog-group-tree')?.addEventListener('click', (event) => {
-            const button = event.target.closest('[data-group]');
-            if (!button) return;
-            state.groupIdx = button.dataset.group ? Number(button.dataset.group) : null;
-            document.querySelectorAll('.blog-group-btn').forEach((item) => {
-                item.classList.toggle('is-active', item === button);
-            });
-            renderPosts();
-        });
     };
 
     const hydrate = () => {
-        document.getElementById('blog-group-count').textContent = `${data.groups.length}개 그룹`;
-        document.getElementById('blog-post-count').textContent = `${data.posts.length}개 글`;
-        renderGroups();
         if (!state.postIdx || !renderDetail()) renderPosts();
         bind();
 
